@@ -52,7 +52,7 @@ steps:
         ("AuthType = Office365;" + `
         "Username = $env:ServiceAccountUpn;" + `
         "Password = $env:ServiceAccountPassword;" + `
-        "Url = https://$env:EnvironmentName.crm.dynamics.com")
+        "Url = https://$env:EnvironmentName")
 
     Import-CrmSolution `
       -conn $connection `
