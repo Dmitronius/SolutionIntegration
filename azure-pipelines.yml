@@ -52,6 +52,7 @@ steps:
         ("AuthType = Office365;" + `
         "Username = $env:ServiceAccountUpn;" + `
         "Password = $env:ServiceAccountPassword;" + `
+        "Domain = $env:ServiceAccountDomain;" + `
         "Url = https://$env:EnvironmentName")
 
     Import-CrmSolution `
@@ -62,4 +63,5 @@ steps:
     SolutionName: $(solution.name)
     ServiceAccountUpn: $(serviceAccount.upn)
     ServiceAccountPassword: $(serviceAccount.password)
+    ServiceAccountDomain: $(serviceAccount.domain)
   displayName: 'Import solution'
