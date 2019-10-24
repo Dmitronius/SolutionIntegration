@@ -46,22 +46,3 @@ steps:
 - powershell: Install-Module Microsoft.Xrm.Data.Powershell -Scope CurrentUser -Force
   displayName: 'Install Microsoft.Xrm.Data.PowerShell'
 
-- powershell: |
-    $connection = Get-CrmConnection `
-      -ConnectionString `
-        ("AuthType = Online;" + `
-        "Username = $env:ServiceAccountUpn;" + `
-        "Password = $env:ServiceAccountPassword;" + `
-        "Domain = $env:ServiceAccountDomain;" + `
-        "Url = https://$env:EnvironmentName")
-
-    Import-CrmSolution `
-      -conn $connection `
-      -SolutionFilePath $(Build.ArtifactStagingDirectory)\PackedSolution\$($env:SolutionName)_managed.zip
-  env:
-    EnvironmentName: $(environment.name)
-    SolutionName: $(solution.name)
-    ServiceAccountUpn: $(serviceAccount.upn)
-    ServiceAccountPassword: $(serviceAccount.password)
-    ServiceAccountDomain: $(serviceAccount.domain)
-  displayName: 'Import solution'
