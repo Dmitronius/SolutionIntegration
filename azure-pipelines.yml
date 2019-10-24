@@ -49,7 +49,7 @@ steps:
 - powershell: |
     $connection = Get-CrmConnection `
       -ConnectionString `
-        ("AuthType = Office365;" + `
+        ("AuthType = Online;" + `
         "Username = $env:ServiceAccountUpn;" + `
         "Password = $env:ServiceAccountPassword;" + `
         "Domain = $env:ServiceAccountDomain;" + `
