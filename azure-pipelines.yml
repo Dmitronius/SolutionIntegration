@@ -51,6 +51,7 @@ steps:
     $connection = Get-CrmConnection `
       -ConnectionString `
         ("AuthType = Online;" + `
+        "OrganizationName = IntegrationSolution;" + `
         "Username = $env:ServiceAccountUpn;" + `
         "Password = $env:ServiceAccountPassword;" + `
         "Domain = $env:ServiceAccountDomain;" + `
