@@ -52,8 +52,7 @@ steps:
           -ConnectionString `
             ("AuthType = Office365;" + `
             "Username = $env:ServiceAccountUpn;" + `
-            "Password = $env:ServiceAccountPassword;" + `
-            "Domain = $env:ServiceAccountDomain;" + `
+            "Password = $env:ServiceAccountPassword;" + `           
             "Url = https://$env:EnvironmentName")
 
       Import-CrmSolution `
