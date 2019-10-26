@@ -48,13 +48,13 @@ steps:
   displayName: 'Install Microsoft.Xrm.Data.PowerShell'
 
 - powershell: |
-    $connection = Get-CrmConnection `
-      -ConnectionString `
-        ("AuthType = Office365;" + `
-        "Username = $env:ServiceAccountUpn;" + `
-        "Password = $env:ServiceAccountPassword;" + `
-        "Domain = $env:ServiceAccountDomain;" + `
-        "Url = https://$env:EnvironmentName")
+     $connection = Get-CrmConnection `
+          -ConnectionString `
+            ("AuthType = Office365;" + `
+            "Username = $env:ServiceAccountUpn;" + `
+            "Password = $env:ServiceAccountPassword;" + `
+            "Domain = $env:ServiceAccountDomain;" + `
+            "Url = https://$env:EnvironmentName")
 
       Import-CrmSolution `
       -conn $connection `
