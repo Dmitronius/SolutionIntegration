@@ -28,8 +28,9 @@ steps:
     Start-Process tools/CoreTools/SolutionPackager.exe `
     -ArgumentList `
       "/action: Pack", `
-      "/zipfile: $(Build.ArtifactStagingDirectory)\PackedSolution\$env:SolutionName.zip", `
-      "/folder: $env:SolutionPath" `
+      "/zipfile: $(Build.ArtifactStagingDirectory)\packedSolution\$env:SolutionName.zip", `
+      "/folder: $env:SolutionPath", `
+      "/packagetype: Both" `
     -Wait `
     -NoNewWindow
   env:
@@ -42,7 +43,3 @@ steps:
     pathtoPublish: $(Build.ArtifactStagingDirectory)
     artifactName: drop
   displayName: 'Publish build artifacts'
-
-- powershell: Install-Module Microsoft.Xrm.Data.Powershell -Scope CurrentUser -Force
-  displayName: 'Install Microsoft.Xrm.Data.PowerShell'
-
