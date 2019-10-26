@@ -50,8 +50,8 @@ steps:
 - powershell: |
     $connection = Get-CrmConnection `
       -ConnectionString `
-        ("AuthType = Online;" + `
-        "OrganizationName = IntegrationSolution;" + `
+        ("AuthType = Office365;" + `
+        "OrganizationName = $env:OrganizationName;" + `
         "Username = $env:ServiceAccountUpn;" + `
         "Password = $env:ServiceAccountPassword;" + `
         "Domain = $env:ServiceAccountDomain;" + `
@@ -67,4 +67,5 @@ steps:
           ServiceAccountUpn: $(serviceAccount.upn)
           ServiceAccountPassword: $(serviceAccount.password)
           ServiceAccountDomain: $(serviceAccount.domain)
+          OrganizationName: $(serviceAccount.orgName)
           displayName: 'Import solution'
