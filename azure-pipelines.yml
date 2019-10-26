@@ -56,7 +56,7 @@ steps:
         "Domain = $env:ServiceAccountDomain;" + `
         "Url = https://$env:EnvironmentName")
 
-    Import-CrmSolution `
+    Import-CrmSolutionAsync -BlockUntilImportComplete `
        -conn $connection `
        -SolutionFilePath $(Build.ArtifactStagingDirectory)\packedSolution\$($env:SolutionName)_managed.zip
 
