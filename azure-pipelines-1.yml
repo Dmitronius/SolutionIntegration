@@ -39,7 +39,7 @@ stages:
           -ArgumentList `
             "/action: Pack", `
             "/zipfile: $(Build.ArtifactStagingDirectory)\packedSolution\$env:SolutionName.zip", `
-            "/folder: $env:SolutionPath" `
+            "/folder: $env:SolutionPath", `
             "/packagetype: Both" `
           -Wait `
           -NoNewWindow
