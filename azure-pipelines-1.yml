@@ -38,8 +38,9 @@ stages:
           Start-Process tools/CoreTools/SolutionPackager.exe `
           -ArgumentList `
             "/action: Pack", `
-            "/zipfile: $(Build.ArtifactStagingDirectory)\PackedSolution\$env:SolutionName.zip", `
+            "/zipfile: $(Build.ArtifactStagingDirectory)\packedSolution\$env:SolutionName.zip", `
             "/folder: $env:SolutionPath" `
+            "/packagetype: Both" `
           -Wait `
           -NoNewWindow
         env:
@@ -94,7 +95,7 @@ stages:
 
                   Import-CrmSolutionAsync -BlockUntilImportComplete `
                   -conn $connection `
-                  -SolutionFilePath $(System.ArtifactsDirectory)\drop\PackedSolution\$($env:SolutionName)_managed.zip
+                  -SolutionFilePath $(System.ArtifactsDirectory)\drop\packedSolution\$($env:SolutionName)_managed.zip
 
                    env:
                   EnvironmentName: $(environment.name)
