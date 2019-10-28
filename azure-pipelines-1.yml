@@ -94,7 +94,8 @@ stages:
                     "Password = $env:ServiceAccountPassword;" + `
                     "Domain = $env:ServiceAccountDomain;" + `
                     "Url = https://$env:EnvironmentName")
-                Import-CrmSolutionAsync -BlockUntilImportComplete ` 
+
+                Import-CrmSolutionAsync -BlockUntilImportComplete `
                    -conn $connection `
                    -SolutionFilePath $(System.ArtifactsDirectory)\drop\packedSolution\$($env:SolutionName)_managed.zip
               env:
@@ -103,4 +104,4 @@ stages:
                 ServiceAccountUpn: $(serviceAccount.upn)
                 ServiceAccountPassword: $(serviceAccount.password)
                 ServiceAccountDomain: $(serviceAccount.domain)
-              displayName: 'Import solution'
+                displayName: 'Import solution'
