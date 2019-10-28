@@ -86,23 +86,23 @@ stages:
               displayName: 'Install Microsoft.Xrm.Data.PowerShell'
             - powershell: |
                 $connection = Get-CrmConnection `
-                      -ConnectionString `
-                        ("AuthType = Office365;" + `
-                        "Username = $env:ServiceAccountUpn;" + `
-                        "Password = $env:ServiceAccountPassword;" + `
-                        "Domain = $env:ServiceAccountDomain;" + `
-                        "Url = https://$env:EnvironmentName")
+                  -ConnectionString `
+                    ("AuthType = Office365;" + `
+                    "Username = $env:ServiceAccountUpn;" + `
+                    "Password = $env:ServiceAccountPassword;" + `
+                    "Domain = $env:ServiceAccountDomain;" + `
+                    "Url = https://$env:EnvironmentName")
 
-                  Import-CrmSolutionAsync -BlockUntilImportComplete `
-                  -conn $connection `
-                  -SolutionFilePath $(System.ArtifactsDirectory)\drop\packedSolution\$($env:SolutionName)_managed.zip
+                Import-CrmSolutionAsync -BlockUntilImportComplete `
+                -conn $connection `
+                -SolutionFilePath $(System.ArtifactsDirectory)\drop\packedSolution\$($env:SolutionName)_managed.zip
 
-                   env:
-                  EnvironmentName: $(environment.name)
-                  SolutionName: $(solution.name)
-                  ServiceAccountUpn: $(serviceAccount.upn)
-                  ServiceAccountPassword: $(serviceAccount.password)
-                  ServiceAccountDomain: $(serviceAccount.domain)
-                displayName: 'Import solution'
+              env:
+                EnvironmentName: $(environment.name)
+                SolutionName: $(solution.name)
+                ServiceAccountUpn: $(serviceAccount.upn)
+                ServiceAccountPassword: $(serviceAccount.password)
+                ServiceAccountDomain: $(serviceAccount.domain)
+              displayName: 'Import solution'
 
                 
