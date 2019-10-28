@@ -87,10 +87,10 @@ stages:
             - powershell: |
                 $connection = Get-CrmConnection `
                   -ConnectionString `
-                    ("AuthType = Office365;" + `
-                    "Username = $env:ServiceAccountUpn;" + `
-                    "Password = $env:ServiceAccountPassword;" + `
-                    "Domain = $env:ServiceAccountDomain;" + `
+                    ("AuthType = Online;" +`
+                    "Username = $env:ServiceAccountUpn;" +`
+                    "Password = $env:ServiceAccountPassword;" +`
+                    "Domain = $env:ServiceAccountDomain;" +`
                     "Url = https://$env:EnvironmentName")
 
                 Import-CrmSolutionAsync -BlockUntilImportComplete `
