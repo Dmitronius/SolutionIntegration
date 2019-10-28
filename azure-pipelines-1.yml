@@ -84,6 +84,7 @@ stages:
                 
             - powershell: Install-Module Microsoft.Xrm.Data.Powershell -Scope CurrentUser -Force
               displayName: 'Install Microsoft.Xrm.Data.PowerShell'
+              
             - powershell: |
                 $connection = Get-CrmConnection `
                   -ConnectionString `
@@ -96,7 +97,6 @@ stages:
                 Import-CrmSolutionAsync -BlockUntilImportComplete `
                   -conn $connection `
                   -SolutionFilePath $(System.ArtifactsDirectory)\drop\packedSolution\$($env:SolutionName)_managed.zip
-
               env:
                 EnvironmentName: $(environment.name)
                 SolutionName: $(solution.name)
