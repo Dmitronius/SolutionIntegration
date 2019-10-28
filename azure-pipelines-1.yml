@@ -94,8 +94,8 @@ stages:
                     "Url = https://$env:EnvironmentName")
 
                 Import-CrmSolutionAsync -BlockUntilImportComplete `
-                -conn $connection `
-                -SolutionFilePath $(System.ArtifactsDirectory)\drop\packedSolution\$($env:SolutionName)_managed.zip
+                  -conn $connection `
+                  -SolutionFilePath $(System.ArtifactsDirectory)\drop\packedSolution\$($env:SolutionName)_managed.zip
 
               env:
                 EnvironmentName: $(environment.name)
