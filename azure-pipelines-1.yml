@@ -72,7 +72,9 @@ stages:
       strategy:
         runOnce:
           deploy:
+
             steps:
+            
             - download: none
             - task: DownloadBuildArtifacts@0
               inputs:
@@ -83,7 +85,7 @@ stages:
                 
             - powershell: Install-Module Microsoft.Xrm.Data.Powershell -Scope CurrentUser -Force
               displayName: 'Install Microsoft.Xrm.Data.PowerShell'
-              
+
             - powershell: |
                 $connection = Get-CrmConnection `
                   -ConnectionString `
@@ -92,15 +94,13 @@ stages:
                     "Password = $env:ServiceAccountPassword;" + `
                     "Domain = $env:ServiceAccountDomain;" + `
                     "Url = https://$env:EnvironmentName")
-
-                Import-CrmSolutionAsync -BlockUntilImportComplete `
+                Import-CrmSolutionAsync -BlockUntilImportComplete ` 
                    -conn $connection `
                    -SolutionFilePath $(System.ArtifactsDirectory)\drop\packedSolution\$($env:SolutionName)_managed.zip
-
               env:
                 EnvironmentName: $(environment.name)
                 SolutionName: $(solution.name)
                 ServiceAccountUpn: $(serviceAccount.upn)
                 ServiceAccountPassword: $(serviceAccount.password)
                 ServiceAccountDomain: $(serviceAccount.domain)
-                displayName: 'Import solution'
+              displayName: 'Import solution'
