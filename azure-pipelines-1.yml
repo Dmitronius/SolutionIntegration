@@ -72,7 +72,6 @@ stages:
       strategy:
         runOnce:
           deploy:
-      
             steps:
             - download: none
             - task: DownloadBuildArtifacts@0
@@ -88,7 +87,7 @@ stages:
             - powershell: |
                 $connection = Get-CrmConnection `
                   -ConnectionString `
-                    ("AuthType = Online;" + `
+                    ("AuthType = Office365;" + `
                     "Username = $env:ServiceAccountUpn;" + `
                     "Password = $env:ServiceAccountPassword;" + `
                     "Domain = $env:ServiceAccountDomain;" + `
