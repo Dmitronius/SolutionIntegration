@@ -104,6 +104,6 @@ stages:
                 ServiceAccountUpn: $(serviceAccount.upn)
                 ServiceAccountPassword: $(serviceAccount.password)
                 ServiceAccountDomain: $(serviceAccount.domain)
-              displayName: 'Import solution'
+                displayName: 'Import solution'
 
                 
